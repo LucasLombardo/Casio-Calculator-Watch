@@ -1,5 +1,5 @@
 window.onload = function(){
-
+	keyInit();
 };
 
 var value 		= "",
@@ -12,6 +12,19 @@ var value 		= "",
 	// 				3 - operating, numpartial in display (operator set, waiting for num or operator input)
 	// 				4 - result (value equal to display, num input => clear/ state 0, operator input => state 2)
 
+function keyInit(){
+	//add click listeners to all buttons
+	var keys = document.getElementsByClassName("key");
+	for(i=0; i<keys.length; i++){
+		keys[i].addEventListener("click", function(){
+			handleInput(this.textContent);
+		});
+	}
+}
+
+function handleInput(key){
+	alert(key + " pressed")
+}
 
 function operate(){
 	//operates on the value and display, based on what operator was set
