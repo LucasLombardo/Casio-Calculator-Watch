@@ -1,0 +1,57 @@
+img{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+body { 
+	/*default image size 650x1285*/
+    background-image: url('../images/casio_base.png');
+    background-repeat: no-repeat;
+/*    background-attachment: fixed;*/
+    background-position: top center; 
+    margin: 0;
+}
+
+/*container divs*/
+
+.watch-container{
+	width: 650px;
+	height: 1285px;
+	margin: 0 auto;
+	border: 1px solid red;
+}
+
+.watch-base{
+	margin: 45% auto;
+	height: 48%;
+	width: 82%;
+	border: 1px solid green;
+}
+
+.watch-screen{
+	margin: 16% auto 8% auto;
+	height: 26%;
+	width: 75%;
+	border: 1px solid blue;
+}
+
+.watch-numpad{
+	margin: 0;
+	height: 52%;
+	width: 100%;
+	border: 1px solid yellow;
+}
+
+.key{
+	width: 50px;
+	height: 30px;
+}
+
+.operator{
+	background-color: tan;
+}
+
+.cmdkey{
+	background-color: lightgreen;
+}
