@@ -1,12 +1,12 @@
 Calculator logic
-	-limit number to 8 digits 			-	started - potential issues:
-											how to round the 9th number rather than displaying 8 as sliced off
+	>limit number to 8 digits 			-	partially fixed, need to limit number input
+	>equals sign operating on results	-	fixed
+	>equals sign = NaN on clear display -	fixed
+	>scientific notation > 8 dig?
 
-	-equals sign operating on results	-	fixed 
-	-equals sign = NaN on clear display -	
 
-
-Clock logic
-	-date							-	
-	-time							-	
-	-autoupdate						-	
+Watch logic
+	-date
+	-time
+	-autoupdate every minute
+	-pm

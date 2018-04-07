@@ -71,7 +71,9 @@ function handleInput(key){
 	console.log("display 	= "+display);
 	console.log("operator 	= "+operator);
 	console.log("================================");
-
+	//round numbers if necessary
+	value 	= roundToEight(value);
+	display = roundToEight(display);
 	updateScreen();
 }
 
@@ -83,8 +85,7 @@ function operate(){
 	"÷": function(a, b){ return a/b },
 	"x": function(a, b){ return a*b }
 	}
-	var result = operatorCalcs[operator](value, display);
-	return Math.round(result*1000)/1000;
+	return operatorCalcs[operator](value, display);
 }
 
 function updateScreen(){
@@ -96,4 +97,13 @@ function updateScreen(){
 function appendNum(num1, num2){
 	//appends a number to the end of another number, max 8 
 	return Number(String(num1)+String(num2));
+}
+
+function roundToEight(n){
+	var str = String(n);
+	if(n>99999999) return 99999999;
+	if(str.length<9 || str.length<10 && str.indexOf(".") !== -1) return n;
+	str = str.slice(0,9);
+	var decimals = Math.pow(10, 8-str.indexOf("."));
+	return Math.round(n*decimals)/decimals;
 }
