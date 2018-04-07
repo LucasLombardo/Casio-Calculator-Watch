@@ -10,6 +10,11 @@ body {
     background-repeat: no-repeat;
     background-position: top center; 
     margin: 0;
+    /*disallow highlighting text*/
+    -webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 
 /*container divs*/
@@ -70,11 +75,13 @@ body {
 	background-color: lightgreen;
 }
 
-#display-screen{
+#calc-display{
 	text-align: center;
 	font-size: 36px;
 }
 
+
+/*temp side button styles*/
 
 .watch-side{
 	margin: 10px auto;
@@ -85,4 +92,11 @@ body {
 	text-align: center;
 	font-size: 2em;
 	width: 140px;
+}
+
+/*temp watch styles*/
+
+p{
+	text-align: center;
+	font-size: 1.3em;
 }

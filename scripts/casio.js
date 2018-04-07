@@ -1,4 +1,5 @@
 window.onload = function(){
+	startWatch();
 	keyInit();
 };
 
@@ -6,10 +7,45 @@ window.onload = function(){
 
 var mode = 0; 	// mode 0 - watch mode, mode 1 - calculator mode
 
+function changeMode(){
+	//switch from calc to watch
+	if(mode===0){
+		value = "", display = "", state = 0;
+		mode = 1;
+		//hide calc display
+		document.querySelector("#calc-display").style.display("none");
+		//unhide watch display
+		document.querySelector("#calc-display").style.display("none");
+	}
+}
 
 
 //==========[Watch Logic]================
 
+function startWatch(){
+	var clockInterval = setInterval(setTime, 1000);
+}
+
+function setTime(){
+	//get current time and update the DOM
+	var currTime    =  getTime();
+	var displayTime = currTime.hours + ":" + currTime.minutes + "  " + currTime.seconds;
+	document.querySelector("#week-day").textContent = currTime.weekday;
+	document.querySelector("#time").textContent = displayTime;
+	document.querySelector("#period").textContent = currTime.period;
+}
+
+function getTime(){
+	//returns array of am/pm, hours, minutes, seconds, day of week
+	var d = new Date();
+	return { 
+		"period"  : (d.getHours()>=12 && d.getHours() !== 24) ? "PM" : "AM",
+		"hours"   : d.getHours()>12 ? d.getHours()-12: d.getHours(),
+		"minutes" : d.getMinutes()>9 ? d.getMinutes() : "0" + d.getMinutes(), 
+		"seconds" : d.getSeconds()>9 ? d.getSeconds() : "0" + d.getSeconds(), 
+		"weekday" : ["MO", "TU", "WE", "TH", "FR", "SA", "SU"][d.getDay()]
+	}
+}
 
 //==========[Calculator Logic]===========
 
@@ -107,7 +143,7 @@ function operate(){
 
 function updateScreen(){
 	//updates the calculator screen
-	var displayScreen = document.querySelector("#display-screen");
+	var displayScreen = document.querySelector("#calc-display");
 	displayScreen.textContent = display;
 }
 
@@ -125,6 +161,3 @@ function roundToEight(n){
 	var decimals = Math.pow(10, 8-str.indexOf("."));
 	return Math.round(n*decimals)/decimals;
 }
-
-
-//==========[Watch Logic]==========
