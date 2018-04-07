@@ -3,6 +3,7 @@ Calculator logic
 	>equals sign operating on results	-	fixed
 	>equals sign = NaN on clear display -	fixed
 	>scientific notation > 8 dig?
+	>CE should be on side, decimal should be where it is now
 
 
 Watch logic
@@ -10,3 +11,8 @@ Watch logic
 	-time
 	-autoupdate every minute
 	-pm
+
+
+positioning
+	-dynamic sizing
+	-buttons on side

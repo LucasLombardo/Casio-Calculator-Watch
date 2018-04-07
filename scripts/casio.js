@@ -95,11 +95,12 @@ function updateScreen(){
 }
 
 function appendNum(num1, num2){
-	//appends a number to the end of another number, max 8 
-	return Number(String(num1)+String(num2));
+	//appends a number to the end of another number, return num1 if max length reached
+	return String(num1).length<8 ? Number(String(num1)+String(num2)) : num1;
 }
 
 function roundToEight(n){
+	//rounds a number to 8 digits, caps at 99,999,999
 	var str = String(n);
 	if(n>99999999) return 99999999;
 	if(str.length<9 || str.length<10 && str.indexOf(".") !== -1) return n;
