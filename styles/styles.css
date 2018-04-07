@@ -18,28 +18,28 @@ body {
 	width: 650px;
 	height: 1285px;
 	margin: 0 auto;
-	border: 1px solid rgba(0,0,0,0);
+	border: 1px solid rgba(255,255,0,1);
 }
 
 .watch-base{
 	margin: 45% auto;
 	height: 48%;
 	width: 82%;
-	border: 1px solid rgba(0,0,0,0);
+	border: 1px solid rgba(255,0,0,1);
 }
 
 .watch-screen{
 	margin: 16% auto 8% auto;
 	height: 26%;
 	width: 75%;
-	border: 1px solid rgba(0,0,0,0);
+	border: 1px solid rgba(255,0,0,1);
 }
 
 .watch-numpad{
 	margin: 0;
 	height: 52%;
 	width: 100%;
-	border: 1px solid rgba(0,0,0,0);
+	border: 1px solid rgba(255,0,0,1);
 }
 
 /*content*/
@@ -73,4 +73,16 @@ body {
 #display-screen{
 	text-align: center;
 	font-size: 36px;
+}
+
+
+.watch-side{
+	margin: 10px auto;
+	width: 300px;
+}
+
+.side-button{
+	text-align: center;
+	font-size: 2em;
+	width: 140px;
 }

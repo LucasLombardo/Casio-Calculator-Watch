@@ -2,6 +2,20 @@ window.onload = function(){
 	keyInit();
 };
 
+//==========[Mode Switch Logic]==========
+
+var mode = 0; 	// mode 0 - watch mode, mode 1 - calculator mode
+
+
+
+//==========[Watch Logic]================
+
+
+//==========[Calculator Logic]===========
+
+
+
+
 var value 		= "",
 	display 	= "",
 	operator	= "+",
@@ -54,15 +68,18 @@ function handleInput(key){
 			default: console.log("Error: State not defined, operator input");
 		}
 	//handle cmdkeys
-	} else if("=CE".indexOf(key) !== -1){
-		if(key === "CE"){
+	} else if("=CEClearMode".indexOf(key) !== -1){
+		if(key === "CE" || key ==="Clear"){
 			value = "", display = "", state = 0;
+		} else if(key === "Mode"){
+			changeMode();
 		} else {
-			if(state !== 1) value = operate() || "", display = value, state = 1;			
+			//on equal, only operate if in states 3 or 4;
+			if(state > 2) value = operate() || "err", display = value, state = 1;
 		}
 	//log error if key is not recognized
 	} else {
-		console.log("Error: Key not recognized")
+		console.log("Error: Key not recognized");
 	}
 	
 	//logs for debugging
@@ -108,3 +125,6 @@ function roundToEight(n){
 	var decimals = Math.pow(10, 8-str.indexOf("."));
 	return Math.round(n*decimals)/decimals;
 }
+
+
+//==========[Watch Logic]==========
