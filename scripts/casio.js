@@ -58,7 +58,7 @@ function handleInput(key){
 		if(key === "CE"){
 			value = "", display = "", state = 0;
 		} else {
-			value = operate(), display = value, state = 1;
+			if(state !== 1) value = operate() || "", display = value, state = 1;			
 		}
 	//log error if key is not recognized
 	} else {
@@ -94,6 +94,6 @@ function updateScreen(){
 }
 
 function appendNum(num1, num2){
-	//appends a number to the end of another number
+	//appends a number to the end of another number, max 8 
 	return Number(String(num1)+String(num2));
 }

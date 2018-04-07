@@ -18,36 +18,48 @@ body {
 	width: 650px;
 	height: 1285px;
 	margin: 0 auto;
-	border: 1px solid red;
+	border: 1px solid rgba(0,0,0,0);
 }
 
 .watch-base{
 	margin: 45% auto;
 	height: 48%;
 	width: 82%;
-	border: 1px solid green;
+	border: 1px solid rgba(0,0,0,0);
 }
 
 .watch-screen{
 	margin: 16% auto 8% auto;
 	height: 26%;
 	width: 75%;
-	border: 1px solid blue;
+	border: 1px solid rgba(0,0,0,0);
 }
 
 .watch-numpad{
 	margin: 0;
 	height: 52%;
 	width: 100%;
-	border: 1px solid yellow;
+	border: 1px solid rgba(0,0,0,0);
 }
 
 /*content*/
 
 .key{
-	width: 50px;
+	width: 70px;
 	height: 30px;
+	margin: 20px 30px;
 	font-size: 18px;
+	border-radius: 2em;
+}
+.key:focus{
+	outline: 0;
+}
+.key:active{
+	background-color: gray;
+}
+
+.row-0{
+	margin-top: 20px;
 }
 
 .operator{
