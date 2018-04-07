@@ -8,17 +8,26 @@ window.onload = function(){
 var mode = 0; 	// mode 0 - watch mode, mode 1 - calculator mode
 
 function changeMode(){
+	console.log("changeMode executed")
 	//switch from calc to watch
 	if(mode===0){
-		value = "", display = "", state = 0;
 		mode = 1;
+		//hide watch display
+		document.querySelector(".clock").style.display = "none";
+		//unhide calc display
+		document.querySelector("#calc-display").style.display = "block";		
+	} else if(mode===1){
+		mode = 0;
 		//hide calc display
-		document.querySelector("#calc-display").style.display("none");
+		document.querySelector("#calc-display").style.display = "none";
+		//clear calc memory
+		value = "", display = "", state = 0;
 		//unhide watch display
-		document.querySelector("#calc-display").style.display("none");
+		document.querySelector(".clock").style.display = "block";
+	} else {
+		console.log("Error: Mode not defined")
 	}
 }
-
 
 //==========[Watch Logic]================
 
@@ -50,8 +59,6 @@ function getTime(){
 //==========[Calculator Logic]===========
 
 
-
-
 var value 		= "",
 	display 	= "",
 	operator	= "+",
@@ -76,6 +83,7 @@ function keyInit(){
 function handleInput(key){
 	//handle numbers
 	if(!isNaN(key)){
+		if(mode===0) changeMode();
 		var n = Number(key);
 		switch(state){
 			case 0: 
@@ -91,6 +99,7 @@ function handleInput(key){
 		}		
 	//handle operators		
 	} else if ("+-x÷".indexOf(key) !== -1){
+		if(mode===0) changeMode();
 		switch(state){
 			case 0: ; 			//add negative functionality in later?
 				break;
@@ -105,12 +114,15 @@ function handleInput(key){
 		}
 	//handle cmdkeys
 	} else if("=CEClearMode".indexOf(key) !== -1){
+
 		if(key === "CE" || key ==="Clear"){
+			if(mode===0) changeMode();
 			value = "", display = "", state = 0;
 		} else if(key === "Mode"){
 			changeMode();
 		} else {
 			//on equal, only operate if in states 3 or 4;
+			if(mode===0) changeMode();
 			if(state > 2) value = operate() || "err", display = value, state = 1;
 		}
 	//log error if key is not recognized
@@ -119,11 +131,12 @@ function handleInput(key){
 	}
 	
 	//logs for debugging
-	console.log("state after handleInput = "+state);
-	console.log("value 		= "+value);
-	console.log("display 	= "+display);
-	console.log("operator 	= "+operator);
-	console.log("================================");
+		// console.log("state after handleInput = "+state);
+		// console.log("value 		= "+value);
+		// console.log("display 	= "+display);
+		// console.log("operator 	= "+operator);
+		// console.log("================================");
+
 	//round numbers if necessary
 	value 	= roundToEight(value);
 	display = roundToEight(display);
