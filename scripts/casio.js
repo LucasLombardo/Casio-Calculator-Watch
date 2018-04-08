@@ -15,7 +15,7 @@ function changeMode(){
 		//hide watch display
 		document.querySelector(".clock").style.display = "none";
 		//unhide calc display
-		document.querySelector("#calc-display").style.display = "block";		
+		document.querySelector("#calc-display").style.display = "block";
 	} else if(mode===1){
 		mode = 0;
 		//hide calc display
@@ -25,7 +25,7 @@ function changeMode(){
 		//unhide watch display
 		document.querySelector(".clock").style.display = "block";
 	} else {
-		console.log("Error: Mode not defined")
+		console.log("Error: Mode not defined");
 	}
 }
 
@@ -47,6 +47,7 @@ function setTime(){
 function getTime(){
 	//returns array of am/pm, hours, minutes, seconds, day of week
 	var d = new Date();
+
 	return { 
 		"period"  : (d.getHours()>=12 && d.getHours() !== 24) ? "PM" : "AM",
 		"hours"   : d.getHours()>12 ? d.getHours()-12: d.getHours(),
@@ -59,15 +60,17 @@ function getTime(){
 //==========[Calculator Logic]===========
 
 
-var value 		= "",
-	display 	= "",
-	operator	= "+",
-	state 		= 0;
+var value 			= "",
+	display 		= "",
+	operator		= "+",
+	activeDecimal 	= "",
+	state 			= 0;
 	// 5 states: 	0 - clear (display blank, value blank)
 	// 				1 - result (value equal to display, num input => clear/ state 0, operator input => state 2)
 	// 				2 - numpartial clear (display active, value equal to display)
 	// 				3 - operating, total in display (operator set, waiting for num input)
 	// 				4 - operating, numpartial in display (operator set, waiting for num or operator input)
+
 
 
 function keyInit(){
@@ -96,10 +99,19 @@ function handleInput(key){
 			case 4: display = appendNum(display, n);
 				break;
 			default: console.log("Error: State not defined, number input");
-		}		
+		}
+	//handle decimals
+	} else if (".".indexOf(key) !== -1){
+		if(mode===0) changeMode();
+		//check if theres already a decimal, if so don't do anything
+		if(String(display).indexOf(".")===-1 && !activeDecimal){
+			state < 2 || display===0? activeDecimal = "0." : activeDecimal = ".";
+			state = 2;
+		}
 	//handle operators		
 	} else if ("+-x÷".indexOf(key) !== -1){
 		if(mode===0) changeMode();
+		activeDecimal = "";
 		switch(state){
 			case 0: ; 			//add negative functionality in later?
 				break;
@@ -123,7 +135,7 @@ function handleInput(key){
 		} else {
 			//on equal, only operate if in states 3 or 4;
 			if(mode===0) changeMode();
-			if(state > 2) value = operate() || "err", display = value, state = 1;
+			if(state > 2) value = operate(), display = value, state = 1; //|| "err" removed from value statement
 		}
 	//log error if key is not recognized
 	} else {
@@ -131,11 +143,12 @@ function handleInput(key){
 	}
 	
 	//logs for debugging
-		// console.log("state after handleInput = "+state);
-		// console.log("value 		= "+value);
-		// console.log("display 	= "+display);
-		// console.log("operator 	= "+operator);
-		// console.log("================================");
+		console.log("state after handleInput = "+state);
+		console.log("value 			= "+value);
+		console.log("display 		= "+display);
+		console.log("operator 		= "+operator);
+		console.log("activeDecimal 	= "+activeDecimal);
+		console.log("================================");
 
 	//round numbers if necessary
 	value 	= roundToEight(value);
@@ -151,18 +164,26 @@ function operate(){
 	"÷": function(a, b){ return a/b },
 	"x": function(a, b){ return a*b }
 	}
+	if(isNaN(value)) console.log("Error: Operate failed, value isNaN");
+	if(isNaN(display)) console.log("Error: Operate failed, display isNaN");
 	return operatorCalcs[operator](value, display);
 }
 
 function updateScreen(){
 	//updates the calculator screen
 	var displayScreen = document.querySelector("#calc-display");
-	displayScreen.textContent = display;
+	if(display===0 && activeDecimal){
+		displayScreen.textContent = activeDecimal;
+	} else {
+		displayScreen.textContent = display + activeDecimal;
+	}
 }
 
 function appendNum(num1, num2){
 	//appends a number to the end of another number, return num1 if max length reached
-	return String(num1).length<8 ? Number(String(num1)+String(num2)) : num1;
+	result = String(num1).replace(/./,"").length<8 ? Number(String(num1)+activeDecimal+String(num2)) : num1;
+	num2 === 0 && activeDecimal? activeDecimal+="0" : activeDecimal="";
+	return result;
 }
 
 function roundToEight(n){
@@ -171,6 +192,6 @@ function roundToEight(n){
 	if(n>99999999) return 99999999;
 	if(str.length<9 || str.length<10 && str.indexOf(".") !== -1) return n;
 	str = str.slice(0,9);
-	var decimals = Math.pow(10, 8-str.indexOf("."));
-	return Math.round(n*decimals)/decimals;
+	var multiplier = Math.pow(10, 8-str.indexOf("."));
+	return Math.round(n*multiplier)/multiplier;
 }
