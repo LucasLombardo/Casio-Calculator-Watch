@@ -1,3 +1,8 @@
+@font-face {
+    font-family: digital;
+    src: url(DS-DIGI.ttf);
+}
+
 img{
 	display: block;
 	margin-right: auto;
@@ -99,4 +104,5 @@ body {
 p{
 	text-align: center;
 	font-size: 1.3em;
+	font-family: digital;
 }

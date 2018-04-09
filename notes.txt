@@ -1,23 +1,21 @@
-Calculator logic debugging
-	>limit number to 8 digits 										-	fixed
-	>equals sign operating on results								-	fixed
-	>equals sign = NaN on clear display 							-	fixed
-	>CE should be on side, decimal should be where it is now		-	fixed
-	>0.2 should display as such										- 	fixed
-	>operators should not work when on decimal						- 	fixed
-	>0x5 returns error												-	fixed
-	>hit decimal 2 times in a row triggers error					- 	fixed			
-	>scientific notation > 8 dig?
+Final steps:
 
+	-Styling
+		0. Make final versions of background images
+		1. Side button images
+			1a. Preload and DOM interaction
+			1b. Rework container divs to put divs over buttons
+		2. Screen formatting
+			2a. 8 digits monospaced
+			2b. AM/PM and Day location
+		3. Dynamic scaling to 320px wide screen
+			3a. background images
+			3b. container divs
+			3c. screen and digital font size
+			3d. button positions
 
-
-
-Watch
-	>date is GMT date - need to set based on the offset
-	>how to keep number slots in same position
-
-
-
-positioning
-	-dynamic sizing
-	-buttons on side
+	-Logic
+		1. Display 9999999E if answer exceeded 8 dig
+		2. AM/PM positioning
+		3. Side button clicklisteners/impliment image switch logic
+		4. Refactor code and update comments for readability

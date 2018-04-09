@@ -1,4 +1,5 @@
 window.onload = function(){
+	var clockInterval;
 	startWatch();
 	keyInit();
 };
@@ -14,6 +15,7 @@ function changeMode(){
 		mode = 1;
 		//hide watch display
 		document.querySelector(".clock").style.display = "none";
+		stopWatch();
 		//unhide calc display
 		document.querySelector("#calc-display").style.display = "block";
 	} else if(mode===1){
@@ -22,6 +24,7 @@ function changeMode(){
 		document.querySelector("#calc-display").style.display = "none";
 		//clear calc memory
 		value = "", display = "", state = 0;
+		startWatch();
 		//unhide watch display
 		document.querySelector(".clock").style.display = "block";
 	} else {
@@ -32,7 +35,11 @@ function changeMode(){
 //==========[Watch Logic]================
 
 function startWatch(){
-	var clockInterval = setInterval(setTime, 1000);
+	clockInterval = setInterval(setTime, 1000);
+}
+
+function stopWatch(){
+	clearInterval(clockInterval);
 }
 
 function setTime(){
@@ -47,13 +54,14 @@ function setTime(){
 function getTime(){
 	//returns array of am/pm, hours, minutes, seconds, day of week
 	var d = new Date();
-
+	var twelveHourClock = d.getHours()>12 ? d.getHours()-12: d.getHours();
+	if(twelveHourClock === 0) twelveHourClock = 12;
 	return { 
 		"period"  : (d.getHours()>=12 && d.getHours() !== 24) ? "PM" : "AM",
-		"hours"   : d.getHours()>12 ? d.getHours()-12: d.getHours(),
+		"hours"   : twelveHourClock,
 		"minutes" : d.getMinutes()>9 ? d.getMinutes() : "0" + d.getMinutes(), 
 		"seconds" : d.getSeconds()>9 ? d.getSeconds() : "0" + d.getSeconds(), 
-		"weekday" : ["MO", "TU", "WE", "TH", "FR", "SA", "SU"][d.getDay()]
+		"weekday" : ["SU", "MO", "TU", "WE", "TH", "FR", "SA"][d.getDay()]
 	}
 }
 
@@ -106,7 +114,8 @@ function handleInput(key){
 		//check if theres already a decimal, if so don't do anything
 		if(String(display).indexOf(".")===-1 && !activeDecimal){
 			state < 2 || display===0? activeDecimal = "0." : activeDecimal = ".";
-			state = 2;
+			if(state==1) value = "", display = "", activeDecimal = "0.";
+			state == 4? state = 4: state = 2;
 		}
 	//handle operators		
 	} else if ("+-x÷".indexOf(key) !== -1){
@@ -129,7 +138,7 @@ function handleInput(key){
 
 		if(key === "CE" || key ==="Clear"){
 			if(mode===0) changeMode();
-			value = "", display = "", state = 0;
+			value = "", display = "", activeDecimal = "", state = 0;
 		} else if(key === "Mode"){
 			changeMode();
 		} else {
@@ -142,13 +151,13 @@ function handleInput(key){
 		console.log("Error: Key not recognized");
 	}
 	
-	//logs for debugging
-		console.log("state after handleInput = "+state);
-		console.log("value 			= "+value);
-		console.log("display 		= "+display);
-		console.log("operator 		= "+operator);
-		console.log("activeDecimal 	= "+activeDecimal);
-		console.log("================================");
+	// //logs for debugging
+	// 	console.log("state after handleInput = "+state);
+	// 	console.log("value 			= "+value);
+	// 	console.log("display 		= "+display);
+	// 	console.log("operator 		= "+operator);
+	// 	console.log("activeDecimal 	= "+activeDecimal);
+	// 	console.log("================================");
 
 	//round numbers if necessary
 	value 	= roundToEight(value);
