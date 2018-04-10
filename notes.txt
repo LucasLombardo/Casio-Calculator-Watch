@@ -1,8 +1,8 @@
 Final steps:
 
 	-Styling
-		0. Make final versions of background images
-		1. Side button images
+		0. Make final versions of background images					-finished
+		1. Side button images										
 			1a. Preload and DOM interaction
 			1b. Rework container divs to put divs over buttons
 		2. Screen formatting
@@ -15,7 +15,6 @@ Final steps:
 			3d. button positions
 
 	-Logic
-		1. Display 9999999E if answer exceeded 8 dig
 		2. AM/PM positioning
 		3. Side button clicklisteners/impliment image switch logic
 		4. Refactor code and update comments for readability
