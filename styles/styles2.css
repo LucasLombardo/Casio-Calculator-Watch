@@ -1,0 +1,109 @@
+@font-face {
+    font-family: digital;
+    src: url(DS-DIGI.ttf);
+}
+
+body{
+  margin: 0;
+  background-color: #3882a5;
+}
+
+#background{
+    background: url('https://imageshack.com/a/img922/2558/cjqtoE.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    background-color: #3882a5;
+    height: 100vh;
+    width: 65vh;
+    margin: 0 auto;
+}
+
+.main-container{
+  display: inline-block;
+  border: 1px solid transparent;
+  height: 37%;
+  width: 82%;
+  margin: 48% 9% 0 9%;
+}
+
+/* Flex Layout divs */
+.flex-container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+  .flex-col-1{
+    flex: 15%;
+/*     background-color: rgba(255,0,0,.5); */
+  }
+  .flex-col-2{
+    flex: 70%;
+    /*   background-color: rgba(0,0,255,.5); */
+    display: flex;
+    flex-direction: column;
+  }
+  .flex-col-3{
+    flex: 6%;
+/*     background-color: rgba(255,0,0,.5); */
+  }
+  .flex-col-4{
+    flex: 4%;
+    /*   background-color: rgba(0,0,255,.5); */
+    display: flex;
+    flex-direction: column;
+  }
+
+/* Screen and Numpad */
+.face-flex-row-1{
+  flex: 30%;
+}
+.face-flex-row-2{
+  flex: 10%;
+/*   background-color: rgba(255,0,0,.5); */
+}
+.face-flex-row-3{
+  flex: 56%;
+}
+
+/* Buttons */
+.side-flex-row-1{
+  flex: 6%;
+/*   background-color: rgba(255,0,0,.5); */
+}
+.side-flex-row-2{
+  flex: 35%;
+}
+.side-flex-row-3{
+  flex: 5%;
+/*   background-color: rgba(255,0,0,.5); */
+}
+.side-flex-row-4{
+  flex: 35%;
+}
+.side-flex-row-5{
+  flex: 16%;
+/*   background-color: rgba(255,0,0,.5); */
+}
+
+.numrow{
+  height:25%;
+  margin-left: 2%;
+}
+
+button{
+  font-size: 0;
+  height: 50%;
+  width: 12%;
+  border-radius: 35%;
+  background-color: #5d606a;
+  border-color: #7f8082 #7f8082 #2b2c30 #2b2c30;
+  margin-left: 9.5%;
+  margin-top: 4%;
+}
+.numrow-4>button{
+  margin-top: 2.7%;
+}
+button:focus{
+  outline:none;
+}

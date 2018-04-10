@@ -1,6 +1,6 @@
 @font-face {
     font-family: digital;
-    src: url(DS-DIGI.ttf);
+    src: url(digital-7.ttf);
 }
 
 img{
@@ -39,6 +39,7 @@ body {
 }
 
 .watch-screen{
+	font-family: digital;
 	margin: 16% auto 8% auto;
 	height: 26%;
 	width: 75%;
