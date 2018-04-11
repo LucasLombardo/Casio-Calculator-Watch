@@ -100,7 +100,8 @@ var value 			= "",
 	display 		= "",
 	operator		= "+",
 	activeDecimal 	= "",
-	state 			= 0;
+	state 			= 0,
+	overflow		= false;
 	// 5 states: 	0 - clear (display blank, value blank)
 	// 				1 - result (value equal to display, num input => clear/ state 0, operator input => state 2)
 	// 				2 - numpartial clear (display active, value equal to display)
@@ -133,7 +134,7 @@ function handleInput(key){
 		var n = Number(key);
 		switch(state){
 			case 0: 
-			case 1: value = n, display = n, state = 2;
+			case 1: value = display+n, display = value, state = 2;
 				break;
 			case 2: value = appendNum(display, n), display = value;
 				break;
@@ -157,7 +158,7 @@ function handleInput(key){
 		if(mode===0) changeMode();
 		activeDecimal = "";
 		switch(state){
-			case 0: ; 			//add negative functionality in later?
+			case 0: if("-".indexOf(key) !== -1) display="-"; 			//add negative functionality in later?
 				break;
 			case 1:
 			case 2: operator = key, state = 3;
@@ -194,7 +195,7 @@ function handleInput(key){
 
 
 function clearCalc(){
-	value = "", display = "", activeDecimal = "";
+	value = "", display = "", activeDecimal = "", state=0;
 	updateScreen();
 }
 
@@ -216,6 +217,9 @@ function updateScreen(){
 	var displayScreen = document.querySelector("#display-text");
 	if(display===0 && activeDecimal){
 		displayScreen.textContent = activeDecimal;
+	} else if(overflow){
+		overflow = false;
+		displayScreen.textContent = String(display).slice(0,7)+"E";
 	} else {
 		displayScreen.textContent = display + activeDecimal;
 	}
@@ -230,9 +234,17 @@ function appendNum(num1, num2){
 
 function roundToEight(n){
 	//rounds a number to 8 digits, caps at 99,999,999
+	console.log("round to 8 executed");
 	var str = String(n);
-	if(n>99999999) return 99999999;
-	if(str.length<9 || str.length<10 && str.indexOf(".") !== -1) return n;
+	if(n>99999999){
+		overflow=true;
+		return 99999999;
+	}
+	if(n<-9999999){
+		overflow=true;
+		return -9999999;
+	}
+	if(str.length<9) return n;
 	str = str.slice(0,9);
 	var multiplier = Math.pow(10, 8-str.indexOf("."));
 	return Math.round(n*multiplier)/multiplier;
