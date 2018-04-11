@@ -1,15 +1,20 @@
 @font-face {
     font-family: digital;
-    src: url(DS-DIGI.ttf);
+    src: url(digital-7.ttf);
 }
 
 body{
-  margin: 0;
-  background-color: #3882a5;
+	margin: 0;
+	background-color: #3882a5;
+	/*disallow highlighting text*/
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 
 #background{
-    background: url('https://imageshack.com/a/img922/2558/cjqtoE.jpg');
+    background: url('https://imageshack.com/a/img923/746/ffntD3.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: auto 100%;
@@ -57,6 +62,7 @@ body{
 /* Screen and Numpad */
 .face-flex-row-1{
   flex: 30%;
+  padding-top: 3%;
 }
 .face-flex-row-2{
   flex: 10%;
@@ -106,4 +112,26 @@ button{
 }
 button:focus{
   outline:none;
+}
+
+p{
+	font-family: digital;
+	font-size: 2.8vh;
+	margin: 0 23% 0 18%;
+}
+
+#amPm-text{
+	text-align: left;
+	display: inline;
+	margin-left: 23%;
+}
+
+#day-text{
+	text-align: right;
+	display: inline;
+}
+
+#display-text{
+	text-align: right;
+	font-size: 6vh;
 }

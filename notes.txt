@@ -1,20 +1,10 @@
 Final steps:
 
 	-Styling
-		0. Make final versions of background images					-finished
 		1. Side button images										
-			1a. Preload and DOM interaction
-			1b. Rework container divs to put divs over buttons
-		2. Screen formatting
-			2a. 8 digits monospaced
-			2b. AM/PM and Day location
-		3. Dynamic scaling to 320px wide screen
-			3a. background images
-			3b. container divs
-			3c. screen and digital font size
-			3d. button positions
+			1a. Preload
 
 	-Logic
-		2. AM/PM positioning
-		3. Side button clicklisteners/impliment image switch logic
+		- Rework digit limit logic to account for decimals taking 1 digit
+		- negative number logic
 		4. Refactor code and update comments for readability
