@@ -1,108 +1,139 @@
+/*Background & body*/
+
 @font-face {
-    font-family: digital;
-    src: url(digital-7.ttf);
+	font-family: digital;
+	src: url(digital-7.ttf);
 }
 
-img{
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-body { 
-	/*default image size 650x1285*/
-    background-image: url('../images/casio_base.png');
-    background-repeat: no-repeat;
-    background-position: top center; 
-    margin: 0;
-    /*disallow highlighting text*/
-    -webkit-user-select: none; /* Safari */        
+body{
+	margin: 0;
+	background-color: #3882a5;
+	/*disallow highlighting text*/
+	-webkit-user-select: none; /* Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+/Edge */
 	user-select: none; /* Standard */
 }
 
-/*container divs*/
-
-.watch-container{
-	width: 650px;
-	height: 1285px;
+#background{
+	background: url('https://imageshack.com/a/img923/746/ffntD3.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto 100%;
+	background-color: #3882a5;
+	height: 100vh;
+	width: 65vh;
 	margin: 0 auto;
-	border: 1px solid rgba(255,255,0,1);
 }
 
-.watch-base{
-	margin: 45% auto;
-	height: 48%;
+.main-container{
+	display: inline-block;
+	border: 1px solid transparent;
+	height: 37%;
 	width: 82%;
-	border: 1px solid rgba(255,0,0,1);
+	margin: 48% 9% 0 9%;
 }
 
-.watch-screen{
-	font-family: digital;
-	margin: 16% auto 8% auto;
-	height: 26%;
-	width: 75%;
-	border: 1px solid rgba(255,0,0,1);
-}
+/* Flex Layout divs */
 
-.watch-numpad{
-	margin: 0;
-	height: 52%;
+.flex-container{
+	display: flex;
 	width: 100%;
-	border: 1px solid rgba(255,0,0,1);
+	height: 100%;
+}
+	.flex-col-1{
+		flex: 15%;
+	}
+	.flex-col-2{
+		flex: 70%;
+		display: flex;
+		flex-direction: column;
+	}
+	.flex-col-3{
+		flex: 6%;
+	}
+	.flex-col-4{
+		flex: 4%;
+		display: flex;
+		flex-direction: column;
+	}
+
+/* Screen and Numpad (in flex-col-2)*/
+	.face-flex-row-1{
+		flex: 30%;
+		padding-top: 3%;
+	}
+	.face-flex-row-2{
+		flex: 10%;
+	}
+	.face-flex-row-3{
+		flex: 56%;
+	}
+
+/* Side Buttons (in flex-col-4)*/
+	.side-flex-row-1{
+		flex: 6%;
+	}
+	.side-flex-row-2{
+		flex: 35%;
+		cursor: pointer;
+	}
+	.side-flex-row-3{
+		flex: 5%;
+	}
+	.side-flex-row-4{
+	  flex: 35%;
+	  cursor: pointer;
+	}
+	.side-flex-row-5{
+	  flex: 16%;
+	}
+
+/*Button Formatting*/
+
+button{
+	font-size: 0;
+	height: 50%;
+	width: 12%;
+	border-radius: 35%;
+	background-color: #5d606a;
+	border-color: #7f8082 #7f8082 #2b2c30 #2b2c30;
+	margin-left: 9.5%;
+	margin-top: 4%;
+	cursor: pointer;
+}
+button:focus{
+	outline:none;
 }
 
-/*content*/
-
-.key{
-	width: 70px;
-	height: 30px;
-	margin: 20px 30px;
-	font-size: 18px;
-	border-radius: 2em;
+.numrow{
+	height:25%;
+	margin-left: 2%;
 }
-.key:focus{
-	outline: 0;
-}
-.key:active{
-	background-color: gray;
+.numrow-4>button{
+	margin-top: 2.7%;
 }
 
-.row-0{
-	margin-top: 20px;
-}
-
-.operator{
-	background-color: tan;
-}
-
-.cmdkey{
-	background-color: lightgreen;
-}
-
-#calc-display{
-	text-align: center;
-	font-size: 36px;
-}
-
-
-/*temp side button styles*/
-
-.watch-side{
-	margin: 10px auto;
-	width: 300px;
-}
-
-.side-button{
-	text-align: center;
-	font-size: 2em;
-	width: 140px;
-}
-
-/*temp watch styles*/
+/*Display formatting*/
 
 p{
-	text-align: center;
-	font-size: 1.3em;
+	font-family: digital;
+	font-size: 2.8vh;
+	margin: 0 23% 0 18%;
+}
+
+#amPm-text{
+	text-align: left;
+	display: inline;
+	margin-left: 23%;
+}
+
+#day-text{
+	text-align: right;
+	display: inline;
+}
+
+#display-text{
+	text-align: right;
+	font-size: 6vh;
 }
