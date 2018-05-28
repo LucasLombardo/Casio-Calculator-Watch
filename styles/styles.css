@@ -5,18 +5,18 @@
 	src: url(digital-7.ttf);
 }
 
-body{
+body {
 	margin: 0;
 	background-color: #3882a5;
 	/*disallow highlighting text*/
-	-webkit-user-select: none; /* Safari */        
+	-webkit-user-select: none; /* Safari */
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+/Edge */
 	user-select: none; /* Standard */
 }
 
-#background{
-	background: url('https://imageshack.com/a/img923/746/ffntD3.jpg');
+#background {
+	background: url('https://imageshack.com/a/img922/2131/TSu5nU.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: auto 100%;
@@ -26,7 +26,7 @@ body{
 	margin: 0 auto;
 }
 
-.main-container{
+.main-container {
 	display: inline-block;
 	border: 1px solid transparent;
 	height: 37%;
@@ -36,62 +36,62 @@ body{
 
 /* Flex Layout divs */
 
-.flex-container{
+.flex-container {
 	display: flex;
 	width: 100%;
 	height: 100%;
 }
-	.flex-col-1{
-		flex: 15%;
-	}
-	.flex-col-2{
-		flex: 70%;
-		display: flex;
-		flex-direction: column;
-	}
-	.flex-col-3{
-		flex: 6%;
-	}
-	.flex-col-4{
-		flex: 4%;
-		display: flex;
-		flex-direction: column;
-	}
+.flex-col-1 {
+	flex: 15%;
+}
+.flex-col-2 {
+	flex: 70%;
+	display: flex;
+	flex-direction: column;
+}
+.flex-col-3 {
+	flex: 6%;
+}
+.flex-col-4 {
+	flex: 4%;
+	display: flex;
+	flex-direction: column;
+}
 
 /* Screen and Numpad (in flex-col-2)*/
-	.face-flex-row-1{
-		flex: 30%;
-		padding-top: 3%;
-	}
-	.face-flex-row-2{
-		flex: 10%;
-	}
-	.face-flex-row-3{
-		flex: 56%;
-	}
+.face-flex-row-1 {
+	flex: 30%;
+	padding-top: 3%;
+}
+.face-flex-row-2 {
+	flex: 10%;
+}
+.face-flex-row-3 {
+	flex: 56%;
+}
 
 /* Side Buttons (in flex-col-4)*/
-	.side-flex-row-1{
-		flex: 6%;
-	}
-	.side-flex-row-2{
-		flex: 35%;
-		cursor: pointer;
-	}
-	.side-flex-row-3{
-		flex: 5%;
-	}
-	.side-flex-row-4{
-	  flex: 35%;
-	  cursor: pointer;
-	}
-	.side-flex-row-5{
-	  flex: 16%;
-	}
+.side-flex-row-1 {
+	flex: 6%;
+}
+.side-flex-row-2 {
+	flex: 35%;
+	cursor: pointer;
+}
+.side-flex-row-3 {
+	flex: 5%;
+}
+.side-flex-row-4 {
+	flex: 35%;
+	cursor: pointer;
+}
+.side-flex-row-5 {
+	flex: 16%;
+}
 
 /*Button Formatting*/
 
-button{
+button {
 	font-size: 0;
 	height: 50%;
 	width: 12%;
@@ -102,38 +102,38 @@ button{
 	margin-top: 4%;
 	cursor: pointer;
 }
-button:focus{
-	outline:none;
+button:focus {
+	outline: none;
 }
 
-.numrow{
-	height:25%;
+.numrow {
+	height: 25%;
 	margin-left: 2%;
 }
-.numrow-4>button{
+.numrow-4 > button {
 	margin-top: 2.7%;
 }
 
 /*Display formatting*/
 
-p{
+p {
 	font-family: digital;
 	font-size: 2.8vh;
 	margin: 0 23% 0 18%;
 }
 
-#amPm-text{
+#amPm-text {
 	text-align: left;
 	display: inline;
 	margin-left: 23%;
 }
 
-#day-text{
+#day-text {
 	text-align: right;
 	display: inline;
 }
 
-#display-text{
+#display-text {
 	text-align: right;
 	font-size: 6vh;
 }
